@@ -1,0 +1,52 @@
+Question Bank - Computer Network Quiz Application
+
+Please Note : 
+----------------------------------------------------------------------------------------------------------------
+- This file contains the questions that will be asked in the quiz program.
+- Do not change the format of the document. Otherwise it will lead to errors in the file io function of the program.
+- Do not distrub these initial lines of note as well. The file io function is hardcoded to ignore these lines.
+- Enter the questions in the format given.
+- Each question can have only four options associated to it of which only one can be the correct one.
+- Do not change the relative address of the file. 
+- Do not change the file Name.
+
+SAMPLE FORMAT [ONLY FOR REFERENCE]
+------------------------------------------------------------------------------------------------------------------
+Question:
+Sample Question ?
+Options:
+A
+Correct: B
+C
+D
+-------------------------------------------------------------------------------------------------------------------
+
+BEGIN
+-------------------------------------------------------------------------------------------------------------------
+Question:
+What is the name of our planet ?
+Options:
+Correct: Earth
+Jupiter
+Mars
+Pluto
+
+Question:
+What is the name of our solar system ?
+Options:
+Andromeda
+Nebula
+Messeir 87
+Correct: Milky Way
+
+Question:
+What is my name ?
+Options:
+A
+B
+Correct: C
+D
+
+END
+---------------------------------------------------------------------------------------------------------------------
+
