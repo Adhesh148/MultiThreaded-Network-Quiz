@@ -25,7 +25,7 @@ class Ui_MainWindow1(object):
     client = ""
     elapsed_time = 0
     start_time = 0
-    index = 0
+    index = 1
     def setupUi_1(self,MainWindow,ques,options,client,ui):   
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(481, 319)
@@ -103,7 +103,7 @@ class Ui_MainWindow1(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.index = self.index + 1
+        
         self.retranslateUi(MainWindow,ques,options)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -132,7 +132,8 @@ class Ui_MainWindow1(object):
     def updateQuestionIndex(self):
         question_index = self.label_3.text()
         question_index = question_index.split(" ")[1].split(":")[0]
-        question_index = int(question_index) + 1
+        question_index = int(question_index) + self.index
+        self.index = self.index + 1
         self.label_3.setText("Question "+str(question_index)+":")
 
 
