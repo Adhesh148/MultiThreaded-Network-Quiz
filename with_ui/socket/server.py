@@ -6,7 +6,7 @@ from getQuestions import *
 
 # Define const. parameters
 MAX_LEN = 64
-PORT = 9005
+PORT = 9004
 # SERVER = socket.gethostbyname(socket.gethostname())
 SERVER = "127.0.1.1"
 ADDR = (SERVER,PORT)
@@ -42,6 +42,7 @@ def handle_client(conn,addr):
 	while connected:
 		# receive response from the client
 		response = conn.recv(1024).decode(FORMAT)
+		print(response)
 		conn_indx = client_list.index(conn)
 		time_duration = conn.recv(1024).decode(FORMAT)
 		print(time_duration)
@@ -50,7 +51,6 @@ def handle_client(conn,addr):
 		time_taken[conn_indx] =  time_taken[conn_indx] + time_duration_float
 
 		# Update score
-		print(response)
 		if(response == solutions[0]):
 			client_score[conn_indx] = client_score[conn_indx] + 1
 
@@ -99,7 +99,6 @@ def broadcast(message):
 
 # server start listening
 def start():
-
 	# Let us update the questions and solutions
 	getQuestions(questions,solutions)
 
@@ -113,6 +112,7 @@ def start():
 		thread = threading.Thread(target=handle_client,args=(conn,addr))
 		thread.start()
 		if(len(client_list) == NUM_PLAYERS):						# Once we get [NUM_PLAYERS] connection - start the quiz
+			time.sleep(2)
 			start_quiz()
 
 	conn.close()

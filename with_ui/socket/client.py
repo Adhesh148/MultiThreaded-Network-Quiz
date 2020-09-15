@@ -4,9 +4,10 @@ import select
 
 sys.path.append("/home/adheshreghu/Documents/SEM5/Networking/Lab/Week5/with_ui/ui/") 
 from question import *
+from home import *
 
 HEADER = 64
-PORT = 9005
+PORT = 9004
 SERVER = "127.0.1.1"
 ADDR = (SERVER,PORT)
 FORMAT = 'utf-8'
@@ -59,16 +60,21 @@ def recvMessageF(client,ui,MainWindow):
     ui.setupUi_1(MainWindow,question,options,client,ui)
    
 
-def main(client):
-    # Start listening for questions
-    recvMessage(client)
-
-
 if __name__ == "__main__":
-    client = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    client.connect(ADDR)
+
+    # create home application
+    # home_app  = QtWidgets.QApplication(sys.argv)
+    # home_MainWindow = QtWidgets.QMainWindow()
+    # home_ui = Ui_MainWindow()
+    # home_ui.setupUi(home_MainWindow,ADDR)
+    # home_MainWindow.show()
+    # sys.exit(home_app.exec_())
+
+    clientS = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    clientS.connect(ADDR)
     # receive the welcome and rules message
-    wlcm_msg = client.recv(4096).decode(FORMAT)
+    wlcm_msg = clientS.recv(4096).decode(FORMAT)
     print(wlcm_msg)
-    main(client)
+    # close this application
+    recvMessage(clientS)
 
