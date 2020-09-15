@@ -21,10 +21,11 @@ sys.path.append("/home/adheshreghu/Documents/SEM5/Networking/Lab/Week5/with_ui/s
 from client import *
 
 class Ui_MainWindow1(object):
-    clicked = 0
     response = ""
     client = ""
-    clicked = 0
+    elapsed_time = 0
+    start_time = 0
+    index = 0
     def setupUi_1(self,MainWindow,ques,options,client,ui):   
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(481, 319)
@@ -102,43 +103,43 @@ class Ui_MainWindow1(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.index = self.index + 1
         self.retranslateUi(MainWindow,ques,options)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        # Just in case
-        # self.radioButton.setEnabled(True)
-        # self.radioButton_2.setEnabled(True)
-        # self.radioButton_3.setEnabled(True)
-        # self.radioButton_4.setEnabled(True)
-        # self.pushButton.setEnabled(True)
-
         self.client = client
-        elapsed_time = 0
-        self.clicked = self.clicked + 1
+        self.elapsed_time = 0
        
         # start time
-        start_time = time.time()
+        self.start_time = time.time()
 
         # lets use a timer to update the timer label
         timer = QtCore.QTimer(MainWindow)
-        timer.timeout.connect(lambda: self.updateTimer(client,ui,MainWindow,timer,start_time,elapsed_time))
+        timer.timeout.connect(lambda: self.updateTimer(client,ui,MainWindow,timer))
         timer.start(1000)
 
-        self.pushButton.clicked.connect(lambda: self.onSubmit(client,ui,MainWindow,timer,start_time))
+        self.pushButton.clicked.connect(lambda: self.onSubmit(client,ui,MainWindow,timer))
 
-    def updateTimer(self,client,ui,MainWindow,timer,start_time,elapsed_time):
-        elapsed_time = elapsed_time + 1
-        curr_time = WAIT_TIME - elapsed_time
+    def updateTimer(self,client,ui,MainWindow,timer):
+        self.elapsed_time = self.elapsed_time + 1
+        curr_time = WAIT_TIME - self.elapsed_time
         timer_txt = "Time Left: "+str(curr_time)
         self.label_6.setText(timer_txt)
         if(curr_time == 0):
-            elapsed_time = 0
-            self.onSubmit(client,ui,MainWindow,timer,start_time)
+            self.elapsed_time = 0
+            self.onSubmit(client,ui,MainWindow,timer)
+
+    def updateQuestionIndex(self):
+        question_index = self.label_3.text()
+        question_index = question_index.split(" ")[1].split(":")[0]
+        question_index = int(question_index) + 1
+        self.label_3.setText("Question "+str(question_index)+":")
 
 
-    def onSubmit(self,client,ui,MainWindow,timer,start_time):
+    def onSubmit(self,client,ui,MainWindow,timer):
         
         timer.stop()
+        end_time = time.time()
         self.disableButtons()
         response = "e"
         if(self.radioButton.isChecked() == True):
@@ -150,14 +151,14 @@ class Ui_MainWindow1(object):
         elif(self.radioButton_4.isChecked() == True):
             response = "d"
 
-        # self.response = response
         print(response)
+        time.sleep(1)
         client.send(response.encode(FORMAT))
 
         # get end time and send to server
-        end_time = time.time()
-        duration = end_time - start_time
+        duration = end_time - self.start_time
         duration_str = str(duration)
+        time.sleep(1)
         client.send(duration_str.encode(FORMAT))
         # call the receive message defined in the client code
         recvMessageF(client,ui,MainWindow)
@@ -181,5 +182,13 @@ class Ui_MainWindow1(object):
         self.radioButton_3.setText(_translate("MainWindow", options[2]))
         self.radioButton_4.setText(_translate("MainWindow", options[3]))
         self.pushButton.setText(_translate("MainWindow", "Submit"))
-        self.label_5.setText(_translate("MainWindow", "1/5"))
+        self.label_5.setText(_translate("MainWindow", ""))
         self.label_6.setText(_translate("MainWindow", "Time Left: 10:00"))
+
+        self.label_3.adjustSize()
+        self.label_4.adjustSize() 
+        self.radioButton.adjustSize() 
+        self.radioButton_2.adjustSize()
+        self.radioButton_3.adjustSize() 
+        self.radioButton_4.adjustSize() 
+

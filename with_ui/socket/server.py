@@ -2,11 +2,12 @@ import socket
 import threading
 import time
 import sys
+import numpy as np
 from getQuestions import *
 
 # Define const. parameters
 MAX_LEN = 64
-PORT = 9004
+PORT = 9001
 # SERVER = socket.gethostbyname(socket.gethostname())
 SERVER = "127.0.1.1"
 ADDR = (SERVER,PORT)
@@ -17,6 +18,7 @@ NUM_PLAYERS = 2
 
 # Global variables
 client_list = []
+client_names = []
 time_taken = []
 client_score = []
 locked_client = []
@@ -37,6 +39,12 @@ def handle_client(conn,addr):
 	msg = "Welcome to the Quiz. Waiting for other players..."
 	msg = msg.encode(FORMAT)
 	conn.send(msg)
+
+	# receive the username of client
+	username = conn.recv(1024).decode(FORMAT)
+	indx = client_list.index(conn)
+	client_names[indx] = username
+	print("Name of client: ",username)
 	
 	connected = True
 	while connected:
@@ -87,6 +95,39 @@ def end_quiz():
 	broadcast("Game Over")
 	print(time_taken)
 	print(client_score)
+
+	# calculate rank
+	rank = []
+	key = [(100 - i) for i in client_score]
+	key = [(i+j) for i,j in zip(key,time_taken)]
+	# based on the key - lowest key value gets highest rank
+	array = np.array(key)
+	temp = array.argsort()
+	rank = np.empty_like(temp)
+	rank[temp] = np.arange(len(array))
+	rank = [(i+1) for i in rank]
+	print(rank)
+
+	# Now broadcast the number of players
+	broadcast(str(NUM_PLAYERS))
+	time.sleep(1)
+
+	for client in client_list:
+		for player in client_list:
+			indx = client_list.index(player)
+			rank_msg = "Player "+ str(indx) + "-" + client_names[indx] 
+			if(indx == client_list.index(client)):
+				rank_msg = rank_msg + " [YOU]"
+			rank_msg = rank_msg + "-" + str(rank[indx]) + "-" + str(client_score[indx]) + "-" + str(time_taken[indx])
+			print(rank_msg)
+			client.send(rank_msg.encode(FORMAT))
+			time.sleep(0.1)
+		time.sleep(0.3)
+		final_msg = "Sorry. You came in " + str(rank[client_list.index(client)]) + ". Better Luck next time."
+		if(rank[client_list.index(client)] == 1):
+			final_msg = "Congrats! You have won the quiz."
+		client.send(final_msg.encode(FORMAT))
+
 	# Close all connections
 	for clients in client_list:
 		clients.close()
@@ -96,7 +137,7 @@ def broadcast(message):
     for clients in client_list:
     	clients.send(message.encode(FORMAT))
 
-
+	
 # server start listening
 def start():
 	# Let us update the questions and solutions
@@ -109,6 +150,7 @@ def start():
 		client_list.append(conn)
 		time_taken.append(0)
 		client_score.append(0)
+		client_names.append("player")
 		thread = threading.Thread(target=handle_client,args=(conn,addr))
 		thread.start()
 		if(len(client_list) == NUM_PLAYERS):						# Once we get [NUM_PLAYERS] connection - start the quiz
