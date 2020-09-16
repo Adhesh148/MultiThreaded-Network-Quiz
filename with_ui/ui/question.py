@@ -198,6 +198,8 @@ class Ui_MainWindow1(object):
         self.label_5.setText(_translate("MainWindow", ""))
         self.label_6.setText(_translate("MainWindow", "Time Left: 10:00"))
 
+        MainWindow.adjustSize()
+        self.label.adjustSize()
         self.label_3.adjustSize()
         self.label_4.adjustSize()  
         self.radioButton.adjustSize() 
