@@ -29,7 +29,7 @@ class Ui_MainWindow1(object):
     index = 1
     def setupUi_1(self,MainWindow,ques,options,client,ui):   
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(481, 319)
+        MainWindow.resize(500, 319)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
@@ -186,7 +186,7 @@ class Ui_MainWindow1(object):
             self.radioButton.setStyleSheet("padding:15px")
             self.radioButton_2.setStyleSheet("padding:15px") 
             self.radioButton_3.setStyleSheet("padding:15px") 
-            self.radioButton_4.setStyleSheet("padding:15px")  
+            self.radioButton_4.setStyleSheet("padding:15px")
         # print(ques)
 
         self.label_4.setText(_translate("MainWindow", ques))
@@ -198,7 +198,7 @@ class Ui_MainWindow1(object):
         self.label_5.setText(_translate("MainWindow", ""))
         self.label_6.setText(_translate("MainWindow", "Time Left: 10:00"))
 
-        MainWindow.adjustSize()
+        # MainWindow.adjustSize()
         self.label.adjustSize()
         self.label_3.adjustSize()
         self.label_4.adjustSize()  
