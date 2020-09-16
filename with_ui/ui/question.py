@@ -13,11 +13,12 @@ import sys
 import socket
 import sip
 import time
+import os
 
 FORMAT = 'utf-8'
 WAIT_TIME = 10
 
-sys.path.append("../socket/") 
+sys.path.append(os.path.normpath("../socket/")) 
 from client import *
 
 class Ui_MainWindow1(object):
