@@ -153,14 +153,14 @@ class Ui_MainWindow1(object):
         elif(self.radioButton_4.isChecked() == True):
             response = "d"
 
-        print(response)
-        time.sleep(1)
+        # print(response)
+        # time.sleep(1)
         client.send(response.encode(FORMAT))
 
         # get end time and send to server
         duration = end_time - self.start_time
         duration_str = str(duration)
-        time.sleep(1)
+        time.sleep(0.5)
         client.send(duration_str.encode(FORMAT))
         # call the receive message defined in the client code
         recvMessageF(client,ui,MainWindow)

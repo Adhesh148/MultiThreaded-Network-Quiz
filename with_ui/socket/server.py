@@ -13,7 +13,7 @@ ADDR = (SERVER,PORT)
 FORMAT = "utf-8"
 DISCONNECT_MSG = "Game Over"
 WAIT_TIME = 30
-NUM_PLAYERS = 2
+NUM_PLAYERS = 3
 
 # Global variables
 client_list = []
@@ -51,10 +51,11 @@ def handle_client(conn,addr):
 		response = conn.recv(1024).decode(FORMAT)
 		print(response)
 		conn_indx = client_list.index(conn)
+		time.sleep(0.1)
 		time_duration = conn.recv(1024).decode(FORMAT)
-		print(time_duration)
+		# print(time_duration)
 		time_duration_float = float(time_duration)
-		print(time_duration_float)
+		# print(time_duration_float)
 		time_taken[conn_indx] =  time_taken[conn_indx] + time_duration_float
 
 		# Update score
@@ -98,7 +99,7 @@ def end_quiz():
 	rank = [0]*NUM_PLAYERS
 	# based on the key - lowest key value gets highest rank
 	indices = [i for i in range(NUM_PLAYERS)]
-	c = list(zip(client_score,time_taken,indices))
+	c = list(zip(client_score,(-1) * time_taken,indices))
 	c = sorted(c)
 	for pos in range(len(c)):
 		rank[c[pos][2]] = NUM_PLAYERS - pos
