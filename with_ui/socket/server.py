@@ -13,7 +13,7 @@ ADDR = (SERVER,PORT)
 FORMAT = "utf-8"
 DISCONNECT_MSG = "Game Over"
 WAIT_TIME = 30
-NUM_PLAYERS = 3
+NUM_PLAYERS = 4
 
 # Global variables
 client_list = []
@@ -99,7 +99,8 @@ def end_quiz():
 	rank = [0]*NUM_PLAYERS
 	# based on the key - lowest key value gets highest rank
 	indices = [i for i in range(NUM_PLAYERS)]
-	c = list(zip(client_score,(-1) * time_taken,indices))
+	neg_time = [((-1) * i) for i in time_taken]
+	c = list(zip(client_score,neg_time,indices))
 	c = sorted(c)
 	for pos in range(len(c)):
 		rank[c[pos][2]] = NUM_PLAYERS - pos

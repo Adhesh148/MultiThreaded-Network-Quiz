@@ -153,7 +153,7 @@ class Ui_MainWindow1(object):
         elif(self.radioButton_4.isChecked() == True):
             response = "d"
 
-        # print(response)
+        print(response)
         # time.sleep(1)
         client.send(response.encode(FORMAT))
 
