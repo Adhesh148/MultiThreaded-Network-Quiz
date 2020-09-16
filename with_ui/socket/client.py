@@ -1,8 +1,9 @@
 import socket
 import sys
 import select
+import os
 
-sys.path.append("../ui/") 
+sys.path.append(os.path.normpath("../ui/"))
 from question import *
 from home import *
 
