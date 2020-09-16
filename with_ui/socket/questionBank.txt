@@ -28,7 +28,7 @@ What is the capital of Mizoram ?
 Options:
 Imphal
 Itanagar
-Correct: Aizwal
+Correct: Aizawl
 Dispur
 
 Question:
