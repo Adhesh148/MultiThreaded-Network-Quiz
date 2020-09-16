@@ -29,7 +29,8 @@ class Ui_MainWindow1(object):
     index = 1
     def setupUi_1(self,MainWindow,ques,options,client,ui):   
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(500, 319)
+        MainWindow.resize(490, 319)
+        # MainWindow.adjustSize()
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
@@ -174,7 +175,7 @@ class Ui_MainWindow1(object):
 
     def retranslateUi(self, MainWindow,ques,options):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Quiz"))
         self.label.setText(_translate("MainWindow", "Status: Connected"))
         self.label_7.setText(_translate("MainWindow", "127.0.0.1"))
         self.label_3.setText(_translate("MainWindow", "Question 1:"))
@@ -198,7 +199,6 @@ class Ui_MainWindow1(object):
         self.label_5.setText(_translate("MainWindow", ""))
         self.label_6.setText(_translate("MainWindow", "Time Left: 10:00"))
 
-        # MainWindow.adjustSize()
         self.label.adjustSize()
         self.label_3.adjustSize()
         self.label_4.adjustSize()  

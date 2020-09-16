@@ -7,8 +7,7 @@ from getQuestions import *
 
 # Define const. parameters
 MAX_LEN = 64
-PORT = 9002
-# SERVER = socket.gethostbyname(socket.gethostname())
+PORT = 9001
 SERVER = "127.0.0.1"
 ADDR = (SERVER,PORT)
 FORMAT = "utf-8"
@@ -102,7 +101,7 @@ def end_quiz():
 	c = list(zip(client_score,time_taken,indices))
 	c = sorted(c)
 	for pos in range(len(c)):
-		rank[c[pos][2]] = pos + 1
+		rank[c[pos][2]] = NUM_PLAYERS - pos
 	print(rank)
 
 	# Now broadcast the number of players
