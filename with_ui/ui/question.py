@@ -178,6 +178,17 @@ class Ui_MainWindow1(object):
         self.label.setText(_translate("MainWindow", "Status: Connected"))
         self.label_7.setText(_translate("MainWindow", "127.0.0.1"))
         self.label_3.setText(_translate("MainWindow", "Question 1:"))
+
+        # Wrap the word - manually
+        ques_words = ques.split(" ")
+        if(len(ques_words) > 8):
+            ques = ' '.join(map(str, ques_words[:8])) + "\n" + ' '.join(map(str, ques_words[8:])) +"\n"
+            self.radioButton.setStyleSheet("padding:15px")
+            self.radioButton_2.setStyleSheet("padding:15px") 
+            self.radioButton_3.setStyleSheet("padding:15px") 
+            self.radioButton_4.setStyleSheet("padding:15px")  
+        # print(ques)
+
         self.label_4.setText(_translate("MainWindow", ques))
         self.radioButton.setText(_translate("MainWindow", options[0]))
         self.radioButton_2.setText(_translate("MainWindow", options[1]))
@@ -186,10 +197,9 @@ class Ui_MainWindow1(object):
         self.pushButton.setText(_translate("MainWindow", "Submit"))
         self.label_5.setText(_translate("MainWindow", ""))
         self.label_6.setText(_translate("MainWindow", "Time Left: 10:00"))
-        self.label_4.setWordWrap(True) 
 
         self.label_3.adjustSize()
-        self.label_4.adjustSize() 
+        self.label_4.adjustSize()  
         self.radioButton.adjustSize() 
         self.radioButton_2.adjustSize()
         self.radioButton_3.adjustSize() 

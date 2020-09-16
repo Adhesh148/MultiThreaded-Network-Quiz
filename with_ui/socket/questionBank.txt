@@ -24,6 +24,14 @@ D
 BEGIN
 -------------------------------------------------------------------------------------------------------------------
 Question:
+Which team was jointly declared winner of the online chess olympiad along with Russia ?
+Options:
+Norway
+USA
+Correct: India
+China
+
+Question:
 What is the name of our planet ?
 Options:
 Correct: Earth
@@ -42,18 +50,10 @@ Correct: Milky Way
 Question:
 What is the nearest star to earth ?
 Options:
-proxima centauri
-alpha centauri
-Correct: alpha centauri A
-betelgeuse
-
-Question:
-Which team was jointly declared winner of the online chess olympiad along with Russia ?
-Options:
-Norway
-USA
-Correct: India
-China
+Proxima centauri
+Alpha centauri
+Correct: Alpha centauri A
+Betelgeuse
 
 END
 ---------------------------------------------------------------------------------------------------------------------

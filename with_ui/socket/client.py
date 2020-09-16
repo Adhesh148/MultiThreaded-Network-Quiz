@@ -8,8 +8,8 @@ from question import *
 from home import *
 
 HEADER = 64
-PORT = 11076
-SERVER = "2.tcp.ngrok.io"
+PORT = 15744
+SERVER = "0.tcp.ngrok.io"
 ADDR = (SERVER,PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MSG = "Game Over"
