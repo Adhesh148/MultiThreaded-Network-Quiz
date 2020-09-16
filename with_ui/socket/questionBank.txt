@@ -24,12 +24,12 @@ D
 BEGIN
 -------------------------------------------------------------------------------------------------------------------
 Question:
-Which team was jointly declared winner of the online chess olympiad along with Russia ?
+What is the capital of Mizoram ?
 Options:
-Norway
-USA
-Correct: India
-China
+Imphal
+Itanagar
+Correct: Aizwal
+Dispur
 
 Question:
 What is the name of our planet ?
