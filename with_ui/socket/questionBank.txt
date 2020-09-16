@@ -54,7 +54,13 @@ Norway
 USA
 Correct: India
 China
-
+Question:
+What is the hottest planet in our solar system ?
+Options:
+Mercury
+Earth
+Mars
+Correct: Venus
 END
 ---------------------------------------------------------------------------------------------------------------------
 
