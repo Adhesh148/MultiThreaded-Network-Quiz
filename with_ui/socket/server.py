@@ -14,7 +14,7 @@ ADDR = (SERVER,PORT)
 FORMAT = "utf-8"
 DISCONNECT_MSG = "Game Over"
 WAIT_TIME = 30
-NUM_PLAYERS = 4
+NUM_PLAYERS = 3
 
 # Global variables
 client_list = []
@@ -96,15 +96,13 @@ def end_quiz():
 	time.sleep(1)
 
 	# calculate rank
-	rank = []
-	key = [(100 - i) for i in client_score]
-	key = [(i+j) for i,j in zip(key,time_taken)]
+	rank = [0]*NUM_PLAYERS
 	# based on the key - lowest key value gets highest rank
-	array = np.array(key)
-	temp = array.argsort()
-	rank = np.empty_like(temp)
-	rank[temp] = np.arange(len(array))
-	rank = [(i+1) for i in rank]
+	indices = [i for i in range(NUM_PLAYERS)]
+	c = list(zip(client_score,time_taken,indices))
+	c = sorted(c)
+	for pos in range(len(c)):
+		rank[c[2]] = pos + 1
 	print(rank)
 
 	# Now broadcast the number of players
