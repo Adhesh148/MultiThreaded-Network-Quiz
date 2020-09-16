@@ -32,7 +32,7 @@ Mars
 Pluto
 
 Question:
-What is the name of our solar system ?
+What is the name of our galaxy ?
 Options:
 Andromeda
 Nebula
