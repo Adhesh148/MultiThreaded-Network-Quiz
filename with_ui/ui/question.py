@@ -17,7 +17,7 @@ import time
 FORMAT = 'utf-8'
 WAIT_TIME = 10
 
-sys.path.append("/home/adheshreghu/Documents/SEM5/Networking/Lab/Week5/with_ui/socket/") 
+sys.path.append("../socket/") 
 from client import *
 
 class Ui_MainWindow1(object):
@@ -185,6 +185,7 @@ class Ui_MainWindow1(object):
         self.pushButton.setText(_translate("MainWindow", "Submit"))
         self.label_5.setText(_translate("MainWindow", ""))
         self.label_6.setText(_translate("MainWindow", "Time Left: 10:00"))
+        self.label_4.setWordWrap(True) 
 
         self.label_3.adjustSize()
         self.label_4.adjustSize() 

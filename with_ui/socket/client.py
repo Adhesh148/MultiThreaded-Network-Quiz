@@ -2,13 +2,13 @@ import socket
 import sys
 import select
 
-sys.path.append("/home/adheshreghu/Documents/SEM5/Networking/Lab/Week5/with_ui/ui/") 
+sys.path.append("../ui/") 
 from question import *
 from home import *
 
 HEADER = 64
-PORT = 9001
-SERVER = "127.0.1.1"
+PORT = 11076
+SERVER = "2.tcp.ngrok.io"
 ADDR = (SERVER,PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MSG = "Game Over"

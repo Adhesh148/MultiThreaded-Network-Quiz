@@ -40,12 +40,20 @@ Messeir 87
 Correct: Milky Way
 
 Question:
-What is my name ?
+What is the nearest star to earth ?
 Options:
-A
-B
-Correct: C
-D
+proxima centauri
+alpha centauri
+Correct: alpha centauri A
+betelgeuse
+
+Question:
+Which team was jointly declared winner of the online chess olympiad along with Russia ?
+Options:
+Norway
+USA
+Correct: India
+China
 
 END
 ---------------------------------------------------------------------------------------------------------------------

@@ -9,7 +9,7 @@ from getQuestions import *
 MAX_LEN = 64
 PORT = 9001
 # SERVER = socket.gethostbyname(socket.gethostname())
-SERVER = "127.0.1.1"
+SERVER = "127.0.0.1"
 ADDR = (SERVER,PORT)
 FORMAT = "utf-8"
 DISCONNECT_MSG = "Game Over"
@@ -62,10 +62,7 @@ def handle_client(conn,addr):
 		if(response == solutions[0]):
 			client_score[conn_indx] = client_score[conn_indx] + 1
 
-		# thread_lock.acquire()
 		locked_client.append(conn)
-		# print(len(locked_client))
-		# thread_lock.release()
 
 		# Wait for the minute to get over
 		while(len(locked_client)%NUM_PLAYERS !=0):
@@ -95,6 +92,8 @@ def end_quiz():
 	broadcast("Game Over")
 	print(time_taken)
 	print(client_score)
+
+	time.sleep(1)
 
 	# calculate rank
 	rank = []
