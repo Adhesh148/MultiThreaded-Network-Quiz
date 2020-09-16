@@ -12,10 +12,11 @@ import sys
 import socket
 import sip
 import time
+import os
 
 FORMAT = 'utf-8'
 
-sys.path.append("/home/adheshreghu/Documents/SEM5/Networking/Lab/Week5/with_ui/socket/") 
+sys.path.append(os.path.normpath("../socket/")) 
 from client import *
 
 class Ui_MainWindow(object):
