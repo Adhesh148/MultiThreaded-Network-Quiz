@@ -1,5 +1,4 @@
 # MultiThreaded-Network-Quiz
--------------------------------
 
 ### Objective
 To develop an online quiz for the users to take part in.
@@ -58,3 +57,6 @@ The *questionBank.txt* is a self-explanatory file and any number of questions ca
  - Client Side Code - [with_ui/socket/client.py](with_ui/socket/client.py)
  - UI used - [with_ui/ui/question.py](with_ui/ui/question.py)
  - Helper Function to fetch questions - [with_ui/socket/getQuestions.py](with_ui/socket/getQuestions.py)
+
+--------------------------------------------------------------------------------------------------------
+
