@@ -13,7 +13,7 @@ ADDR = (SERVER,PORT)
 FORMAT = "utf-8"
 DISCONNECT_MSG = "Game Over"
 WAIT_TIME = 30
-NUM_PLAYERS = 4
+NUM_PLAYERS = 2
 
 # Global variables
 client_list = []
