@@ -57,6 +57,24 @@ The *questionBank.txt* is a self-explanatory file and any number of questions ca
  - Client Side Code - [with_ui/socket/client.py](with_ui/socket/client.py)
  - UI used - [with_ui/ui/question.py](with_ui/ui/question.py)
  - Helper Function to fetch questions - [with_ui/socket/getQuestions.py](with_ui/socket/getQuestions.py)
+ 
+ ### Take a Look at the UI
+ 
+ #### Quiz UI
+ 
+ ![ui](with_ui/screenshots/quiz_ui.png)
+ 
+ ![ui](with_ui/screenshots/quiz_ui_2.png)
+ 
+  #### Server Side Terminal
+  
+ ![ui](with_ui/screenshots/server_side.png)
+ 
+ #### Client Side Terminal - With Leaderboard
+ 
+ ![ui](with_ui/screenshots/client_side.png)
+ 
+ ![ui](with_ui/screenshots/client_side_2.png)
 
 --------------------------------------------------------------------------------------------------------
 
